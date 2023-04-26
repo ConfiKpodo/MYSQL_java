@@ -9,29 +9,31 @@ package com.mycompany.cd_collections;
  * @author confi
  */
 public class Genre {
-    private int id;
+     private int id;
     private String name;
-    //constructor
-    public Genre(int id, String name){
+
+    public Genre(String name) {
+        this.name = name;
+    }
+
+    public Genre(int id, String name) {
         this.id = id;
         this.name = name;
     }
-    
-    public Genre(){
-        
+
+    public int getId() {
+        return id;
     }
-    public int getID(){
-        return this.id;
+
+    public void setId(int id) {
+        this.id = id;
     }
-    public void setID(int ID){
-        this.id = ID;
+
+    public String getName() {
+        return name;
     }
-    
-    public String getName(){
-       return this.name;
-    }
-    
-    public void setName(String Name){
-        this.name = Name;
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

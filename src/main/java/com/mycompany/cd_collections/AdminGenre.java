@@ -15,61 +15,76 @@ import java.util.*;
  * @author confi
  */
 public class AdminGenre {
+    private Connection conn;
+    private String url = "jdbc:mysql://localhost/music";
+    private String username = "root";
+    private String password = "nascoict1";
 
-    public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost/music";
-        String username = "root";
-        String password = "nascoict1";
-            try {
-            Connection conn = DriverManager.getConnection(url, username, password);
-            
-            conn.close();
+    public AdminGenre() {
+        try {
+            conn = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             System.err.println("Error: " + e.getMessage());
         }
-            
-        
-        }
-  
-    //methods
-            //insert genre
-       public void insertGenre(Genre genre){
-           try{
-           Statement stmt = conn.createStatement();
-            String insertQuery = "INSERT INTO genres (genre_name) VALUES ('James')";
-            int rowsAffected = stmt.executeUpdate(insertQuery);
+    }
+
+    // insert genre
+    public void insertGenre(Genre genre) {
+        try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO genres (genre_name) VALUES (?)")) {
+            stmt.setString(1, genre.getName());
+            int rowsAffected = stmt.executeUpdate();
             System.out.println(rowsAffected + " row(s) inserted.");
-           }catch(SQLException e){
-               System.out.println("Error: " + e.getMessage());
-           }
-       }
-        //update genre
-        public void updateGenre(Genre genre){
-            try{
-           Statement stmt = conn.createStatement();
-            String updateQuery = "UPDATE genres  SET genre_name 'BeastNation' WHERE genre_id = 4;";
-            int rowsAffected = stmt.executeUpdate(updateQuery);
-            System.out.println(rowsAffected + " row(s) inserted.");
-           }catch(SQLException e){
-               System.out.println("Error: " + e.getMessage());
-           }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-        
-        //delete genre
-        public void deleteGenre(Genre genre){
-            try{
-           Statement stmt = conn.createStatement();
-            String updateQuery = "DELETE * FROM  WHERE genre_id = 4;";
-            int rowsAffected = stmt.executeUpdate(updateQuery);
-            System.out.println(rowsAffected + " row(s) inserted.");
-           }catch(SQLException e){
-               System.out.println("Error: " + e.getMessage());
-           }
+    }
+
+    // update genre
+    public void updateGenre(Genre genre) {
+        try (PreparedStatement stmt = conn.prepareStatement("UPDATE genres SET genre_name = ? WHERE genre_id = ?")) {
+            stmt.setString(1, genre.getName());
+            stmt.setInt(2, genre.getId());
+            int rowsAffected = stmt.executeUpdate();
+            System.out.println(rowsAffected + " row(s) updated.");
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-        
-        //get all genre
-        public void getAll(){
-            
+    }
+
+    // delete genre
+    public void deleteGenre(Genre genre) {
+        try (PreparedStatement stmt = conn.prepareStatement("DELETE FROM genres WHERE genre_id = ?")) {
+            stmt.setInt(1, genre.getId());
+            int rowsAffected = stmt.executeUpdate();
+            System.out.println(rowsAffected + " row(s) deleted.");
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
         }
+    }
+
+    // get all genre
+    public void getAll() {
+        try (Statement stmt = conn.createStatement()) {
+            String selectQuery = "SELECT * FROM genres";
+            ResultSet rs = stmt.executeQuery(selectQuery);
+            while (rs.next()) {
+                int genreId = rs.getInt("genre_id");
+                String genreName = rs.getString("genre_name");
+                System.out.println(genreId + " " + genreName);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        AdminGenre admin = new AdminGenre();
+        admin.getAll();
+    }
+
+    void deleteGenre(int genreId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
 
