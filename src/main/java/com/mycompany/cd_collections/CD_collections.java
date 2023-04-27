@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -35,25 +37,47 @@ public class CD_collections {
                     System.out.println("Enter genre name:");
                     String name = sc.next();
                     Genre genre = new Genre(name);
-                    admin.insertGenre(genre);
-                    System.out.println();
+                {
+                    try {
+                        admin.insertGenre(genre);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(CD_collections.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+       
                     break;
+
                 case 2:
                     System.out.println("Enter genre id:");
                     int id = sc.nextInt();
                     System.out.println("Enter new genre name:");
                     String newName = sc.next();
                     Genre updatedGenre = new Genre(id, newName);
+                    try {
                     admin.updateGenre(updatedGenre);
+                    }catch(SQLException ex){
+                      Logger.getLogger(CD_collections.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     break;
                 case 3:
                     System.out.println("Enter genre id:");
                     int genreId = sc.nextInt();
+                    try{
                     admin.deleteGenre(genreId);
+                    }catch(SQLException ex){
+                    Logger.getLogger(CD_collections.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     break;
                 case 4:
-                    admin.getAll();
+                {
+                    try {
+                        admin.getAll();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(CD_collections.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                     break;
+
                 case 5:
                     sc.close();
                     System.exit(0);
