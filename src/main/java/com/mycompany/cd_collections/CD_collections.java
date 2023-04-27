@@ -36,6 +36,7 @@ public class CD_collections {
                     String name = sc.next();
                     Genre genre = new Genre(name);
                     admin.insertGenre(genre);
+                    System.out.println();
                     break;
                 case 2:
                     System.out.println("Enter genre id:");

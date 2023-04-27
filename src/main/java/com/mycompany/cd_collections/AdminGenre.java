@@ -29,7 +29,7 @@ public class AdminGenre {
     }
 
     // insert genre
-    public void insertGenre(Genre genre) {
+    public void insertGenre(Genre genre){
         try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO genres (genre_name) VALUES (?)")) {
             stmt.setString(1, genre.getName());
             int rowsAffected = stmt.executeUpdate();
@@ -76,11 +76,11 @@ public class AdminGenre {
             System.out.println("Error: " + e.getMessage());
         }
     }
-
-    public static void main(String[] args) {
-        AdminGenre admin = new AdminGenre();
-        admin.getAll();
-    }
+    
+//    public static void main(String[] args) {
+//        AdminGenre admin = new AdminGenre();
+//        admin.getAll();
+//    }
 
     void deleteGenre(int genreId) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
