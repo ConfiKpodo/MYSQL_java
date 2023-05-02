@@ -16,9 +16,9 @@ import java.util.*;
  */
 public class AdminGenre {
     private Connection conn;
-    private String url = "jdbc:mysql://localhost/music";
+    private String url = "jdbc:mysql://localhost/school";
     private String username = "root";
-    private String password = "nascoict1";
+    private String password = "123@Moako";
 
     public AdminGenre() {
         try {
@@ -57,17 +57,22 @@ public class AdminGenre {
 //    }
 
     // get all genre
-    public void getAll() throws SQLException{
-        Statement stmt = conn.createStatement();
-            String selectQuery = "SELECT * FROM genres";
-            ResultSet rs = stmt.executeQuery(selectQuery);
-            while (rs.next()) {
-                int genreId = rs.getInt("genre_id");
-                String genreName = rs.getString("genre_name");
-                System.out.println(genreId + " " + genreName);
-            }
-        
+  public void getAll() throws SQLException {
+    Statement stmt = conn.createStatement();
+    String selectQuery = "SELECT * FROM genres";
+    ResultSet rs = stmt.executeQuery(selectQuery);
+    List<Genre> genres = new ArrayList<>();
+    while (rs.next()) {
+        int genreId = rs.getInt("genre_id");
+        String genreName = rs.getString("genre_name");
+        genres.add(new Genre(genreId, genreName));
     }
+    Genre[] genreArray = genres.toArray(Genre[]::new);
+    for (Genre genre : genreArray) {
+        System.out.println(genre.getGenreId() + " " + genre.getGenreName());
+    }
+}
+
     
 //    public static void main(String[] args) {
 //        AdminGenre admin = new AdminGenre();
