@@ -16,9 +16,9 @@ import java.util.*;
  */
 public class AdminGenre {
     private Connection conn;
-    private String url = "jdbc:mysql://localhost/school";
+    private String url = "jdbc:mysql://localhost/music";
     private String username = "root";
-    private String password = "123@Moako";
+    private String password = " enter your db password";
 
     public AdminGenre() {
         try {
@@ -69,7 +69,7 @@ public class AdminGenre {
     }
     Genre[] genreArray = genres.toArray(new Genre[genres.size()]);
     for (Genre genre : genreArray) {
-        System.out.println(genre.getGenreId() + " " + genre.getGenreName());
+        System.out.println(genre.getId() + " " + genre.getName());
     }
 }
 
