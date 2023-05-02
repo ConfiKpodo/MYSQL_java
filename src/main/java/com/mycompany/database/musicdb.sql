@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `music` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `music`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: music
@@ -33,16 +35,6 @@ CREATE TABLE `author_cd` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `author_cd`
---
-
-LOCK TABLES `author_cd` WRITE;
-/*!40000 ALTER TABLE `author_cd` DISABLE KEYS */;
-INSERT INTO `author_cd` VALUES (1,1),(2,1),(5,1),(3,2),(4,3),(4,4);
-/*!40000 ALTER TABLE `author_cd` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `author_labels`
 --
 
@@ -60,16 +52,6 @@ CREATE TABLE `author_labels` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `author_labels`
---
-
-LOCK TABLES `author_labels` WRITE;
-/*!40000 ALTER TABLE `author_labels` DISABLE KEYS */;
-INSERT INTO `author_labels` VALUES (2,1),(3,1),(4,2);
-/*!40000 ALTER TABLE `author_labels` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `authors`
 --
 
@@ -83,16 +65,6 @@ CREATE TABLE `authors` (
   PRIMARY KEY (`author_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `authors`
---
-
-LOCK TABLES `authors` WRITE;
-/*!40000 ALTER TABLE `authors` DISABLE KEYS */;
-INSERT INTO `authors` VALUES (1,'Confidence','Ghana'),(2,'Abraham','Italy'),(3,'Kpodo','Germany'),(4,'Andrea Bocelli','Spain'),(5,'David Guetta','France'),(6,'Franklin','Italy');
-/*!40000 ALTER TABLE `authors` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `cds`
@@ -120,16 +92,6 @@ CREATE TABLE `cds` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cds`
---
-
-LOCK TABLES `cds` WRITE;
-/*!40000 ALTER TABLE `cds` DISABLE KEYS */;
-INSERT INTO `cds` VALUES (1,'Akoto',2002,1,3,1,2010),(2,'Bhim nation',2010,2,1,2,2011),(3,'One Corner',2014,4,1,1,2004),(4,'Kpo Keke',2016,5,3,3,2010);
-/*!40000 ALTER TABLE `cds` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `customers`
 --
 
@@ -142,16 +104,6 @@ CREATE TABLE `customers` (
   PRIMARY KEY (`customer_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `customers`
---
-
-LOCK TABLES `customers` WRITE;
-/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'Bryte'),(2,'Mike'),(3,'Henglar');
-/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `genres`
@@ -168,16 +120,6 @@ CREATE TABLE `genres` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `genres`
---
-
-LOCK TABLES `genres` WRITE;
-/*!40000 ALTER TABLE `genres` DISABLE KEYS */;
-INSERT INTO `genres` VALUES (1,'Hiplife'),(2,'Highlife'),(3,'Drill'),(4,'Rock'),(5,'Jazz');
-/*!40000 ALTER TABLE `genres` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `labels`
 --
 
@@ -192,16 +134,6 @@ CREATE TABLE `labels` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `labels`
---
-
-LOCK TABLES `labels` WRITE;
-/*!40000 ALTER TABLE `labels` DISABLE KEYS */;
-INSERT INTO `labels` VALUES (1,'Sony'),(2,'Sarknation');
-/*!40000 ALTER TABLE `labels` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `languages`
 --
 
@@ -214,16 +146,6 @@ CREATE TABLE `languages` (
   PRIMARY KEY (`language_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `languages`
---
-
-LOCK TABLES `languages` WRITE;
-/*!40000 ALTER TABLE `languages` DISABLE KEYS */;
-INSERT INTO `languages` VALUES (1,'English'),(2,'Spanish'),(3,'Twi');
-/*!40000 ALTER TABLE `languages` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -234,4 +156,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-02 10:24:48
+-- Dump completed on 2023-05-02 10:27:37
