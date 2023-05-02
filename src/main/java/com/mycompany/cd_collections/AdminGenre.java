@@ -22,6 +22,8 @@ public class AdminGenre {
     private String username = "root";
     private String password = "123@Moako";
 
+
+
     public AdminGenre() {
         try {
             conn = DriverManager.getConnection(url, username, password);
