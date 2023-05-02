@@ -38,6 +38,7 @@ public class AdminGenre {
         System.out.println(rowsAffected + " row(s) inserted.");
         stmt.close();
 
+
     }
 
     // update genre
@@ -47,7 +48,9 @@ public class AdminGenre {
         stmt.setInt(2, genre.getId());
         int rowsAffected = stmt.executeUpdate();
         System.out.println(rowsAffected + " row(s) updated.");
+
         stmt.close();
+
 
     }
 
@@ -60,7 +63,10 @@ public class AdminGenre {
 //        
 //    }
     // get all genre
-    public void getAll() throws SQLException {
+
+
+    public List<Genre> getAll() throws SQLException {
+
         Statement stmt = conn.createStatement();
         String selectQuery = "SELECT * FROM genres";
         ResultSet rs = stmt.executeQuery(selectQuery);
@@ -70,11 +76,15 @@ public class AdminGenre {
             String genreName = rs.getString("genre_name");
             genres.add(new Genre(genreId, genreName));
         }
+
         Genre[] genreArray = genres.toArray(new Genre[genres.size()]);
         for (Genre genre : genreArray) {
             System.out.println(genre.getId() + " " + genre.getName());
         }
         stmt.close();
+
+        return genres;
+
     }
 
 //    public static void main(String[] args) {
@@ -86,11 +96,13 @@ public class AdminGenre {
         stmt.setInt(1, genreId);
         int rowsAffected = stmt.executeUpdate();
         System.out.println(rowsAffected + " row(s) deleted.");
+
         stmt.close();
     }
 
     public void close() throws SQLException {
         this.conn.close();
+
     }
 
 }
