@@ -57,7 +57,7 @@ public class AdminGenre {
 //    }
 
     // get all genre
-  public void getAll() throws SQLException {
+ public void getAll() throws SQLException {
     Statement stmt = conn.createStatement();
     String selectQuery = "SELECT * FROM genres";
     ResultSet rs = stmt.executeQuery(selectQuery);
@@ -67,11 +67,12 @@ public class AdminGenre {
         String genreName = rs.getString("genre_name");
         genres.add(new Genre(genreId, genreName));
     }
-    Genre[] genreArray = genres.toArray(Genre[]::new);
+    Genre[] genreArray = genres.toArray(new Genre[genres.size()]);
     for (Genre genre : genreArray) {
         System.out.println(genre.getGenreId() + " " + genre.getGenreName());
     }
 }
+
 
     
 //    public static void main(String[] args) {
