@@ -80,8 +80,16 @@ public class CD_collections {
                     break;
 
                 case 5:
+                {
+                    try {
+                        admin.close();
+                    } catch (SQLException ex) {
+                        System.out.println("Error closing");
+                    }
+                }
                     sc.close();
                     System.exit(0);
+
                 default:
                     System.out.println("Invalid option.");
                     break;
