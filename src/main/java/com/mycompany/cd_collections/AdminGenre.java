@@ -18,7 +18,7 @@ public class AdminGenre {
     private Connection conn;
     private String url = "jdbc:mysql://localhost/music";
     private String username = "root";
-    private String password = "nascoict1";
+    private String password = "enter db password here";
 
     public AdminGenre() {
         try {
