@@ -41,7 +41,7 @@ public class CD_collections {
                     try {
                         admin.insertGenre(genre);
                     } catch (SQLException ex) {
-                        Logger.getLogger(CD_collections.class.getName()).log(Level.SEVERE, null, ex);
+                      System.out.println(ex);
                     }
                 }
        
@@ -56,7 +56,7 @@ public class CD_collections {
                     try {
                     admin.updateGenre(updatedGenre);
                     }catch(SQLException ex){
-                      Logger.getLogger(CD_collections.class.getName()).log(Level.SEVERE, null, ex);
+                     System.out.println(ex);
                     }
                     break;
                 case 3:
@@ -65,7 +65,7 @@ public class CD_collections {
                     try{
                     admin.deleteGenre(genreId);
                     }catch(SQLException ex){
-                    Logger.getLogger(CD_collections.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println(ex);
                     }
                     break;
                 case 4:
@@ -73,7 +73,8 @@ public class CD_collections {
                     try {
                         admin.getAll();
                     } catch (SQLException ex) {
-                        Logger.getLogger(CD_collections.class.getName()).log(Level.SEVERE, null, ex);
+                       System.out.println(ex);
+                        
                     }
                 }
                     break;

@@ -48,13 +48,13 @@ public class AdminGenre {
     }
 
     // delete genre
-    public void deleteGenre(Genre genre) throws SQLException{
-       PreparedStatement stmt = conn.prepareStatement("DELETE FROM genres WHERE genre_id = ?");
-            stmt.setInt(1, genre.getId());
-            int rowsAffected = stmt.executeUpdate();
-            System.out.println(rowsAffected + " row(s) deleted.");
-        
-    }
+//    public void deleteGenre(Genre genre) throws SQLException{
+//       PreparedStatement stmt = conn.prepareStatement("DELETE FROM genres WHERE genre_id = ?");
+//            stmt.setInt(1, genre.getId());
+//            int rowsAffected = stmt.executeUpdate();
+//            System.out.println(rowsAffected + " row(s) deleted.");
+//        
+//    }
 
     // get all genre
     public void getAll() throws SQLException{
@@ -74,9 +74,12 @@ public class AdminGenre {
 //        admin.getAll();
 //    }
 
-//    void deleteGenre(int genreId) throws SQLException {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
+   public void deleteGenre( int genreId) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("DELETE FROM genres WHERE genre_id = ?");
+            stmt.setInt(1, genreId);
+            int rowsAffected = stmt.executeUpdate();
+            System.out.println(rowsAffected + " row(s) deleted.");
+    }
 
 }
 
